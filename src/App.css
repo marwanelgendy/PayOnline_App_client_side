@@ -20,3 +20,37 @@ ul{
     list-style: none;
 }
 
+.main-title{
+    font-weight: bold;
+    text-align: center;
+    font-size: 38px;
+    position: relative;
+    margin-bottom: 80px;
+}
+.main-title::before{
+    content: '';
+    position: absolute;
+    width: 79px;
+    height: 6px;
+    background-color: var(--white);
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    border-radius: 40px;
+}
+
+@media (max-width:599px) {
+
+}
+@media (min-width:600px) {
+
+}
+@media (min-width:900px) {
+
+}
+@media (min-width:1200px) {
+
+}
+@media (min-width:1536px) {
+
+}

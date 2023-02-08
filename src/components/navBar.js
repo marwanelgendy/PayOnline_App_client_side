@@ -3,7 +3,7 @@ import { Container } from '@mui/system';
 import React from 'react';
 import logo from '../imgs/main_logo.png'
 import '../App.css'
-import '../styles/navBar.css'
+import '../styles/components/navBar.css'
 import { AccountCircleTwoTone, MenuOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 

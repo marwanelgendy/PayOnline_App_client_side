@@ -1,0 +1,245 @@
+.landing-sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--mainColor);
+}
+
+.content .main-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.content .secondary-text {
+    font-size: 24px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.landing-img img {
+    max-width: 100%;
+}
+
+/* Services */
+.services {
+    padding: 50px 0 50px 0;
+    background-color: var(--mainColor);
+    color: var(--white);
+}
+
+.serv-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 0;
+}
+
+.serv-item.reverse {
+    flex-direction: column-reverse;
+}
+
+.serv-item .serv-content,
+.serv-item .serv-img {
+    flex: 0 0 100%;
+}
+
+.serv-item .serv-content .serv-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.serv-item .serv-content .serv-desc {
+    font-size: 18px;
+    line-height: 2;
+}
+
+.serv-item .serv-img {
+    text-align: center;
+}
+
+.serv-item .serv-img img {
+    max-width: 100%;
+}
+
+/* Services */
+
+/* How to use */
+.how-to-use{
+    padding: 50px 0;
+}
+
+.how-to-use .main-title::before{
+    background-color: var(--mainColor);
+}
+
+.htw-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.htw-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100%;
+    margin-bottom: 50px;
+}
+.htw-item .htw-img{
+    margin-bottom: 15px;
+}
+.htw-item .htw-desc{
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--mainColor);
+}
+/* How to use */
+
+/* Contact Us */
+.contact-us {
+    padding: 50px 0 50px 0;
+    background-color: var(--mainColor);
+    color: var(--white);
+}
+
+.input-field{
+    width: 100%;
+    margin-bottom: 25px !important;
+    
+}
+.input-field label{
+    color: white;
+}
+.input-field input{
+    color: white;
+}
+.input-field input::placeholder{
+    color: white;
+} 
+/* Contact Us */
+
+/*footer*/
+.footer{
+    padding: 20px 0;
+}
+.footer-content{
+    color: var(--mainColor);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+/*footer*/
+
+/*Break Points*/
+@media (max-width:599px) {
+    .landing-sec {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .content,
+    .landing-img {
+        flex: 0 0 100%;
+    }
+
+    .content {
+        margin-bottom: 20px;
+    }
+
+    .content .main-text {
+        font-size: 26px;
+        line-height: 40px;
+    }
+}
+
+@media (min-width:600px) {
+    .landing-sec {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .content,
+    .landing-img {
+        flex: 0 0 100%;
+    }
+
+    .content {
+        margin-bottom: 20px;
+    }
+
+    .content .main-text {
+        font-size: 40px;
+        line-height: 60px;
+    }
+
+    /* how to use */
+    .htw-item{
+        flex: 0 0 50%;
+    }
+
+}
+
+@media (min-width:900px) {
+    .content .main-text {
+        font-size: 48px;
+        line-height: 80px;
+    }
+
+    /* services */
+    .serv-item {
+        flex-direction: row !important;
+        padding: 0;
+    }
+
+    .serv-item .serv-content,
+    .serv-item .serv-img {
+        flex: 0 0 50%;
+    }
+    /* services */
+
+    /* how to use */
+    .htw-container{
+        justify-content: space-between;
+    } 
+    .htw-item{
+        flex: 0 0 auto;
+        margin-bottom: 0;
+    }
+    /* how to use */
+}
+
+@media (min-width:1200px) {
+    .landing-sec {
+        flex-direction: row;
+        margin: 110px 0;
+    }
+
+    .content,
+    .landing-img {
+        flex: 0 0 50%;
+    }
+
+    .content {
+        margin-bottom: 0;
+    }
+
+    .content .main-text {
+        line-height: 95px;
+    }
+}
+
+@media (min-width:1536px) {}
