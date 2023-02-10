@@ -116,18 +116,18 @@
     color: var(--white);
 }
 
-.input-field{
+.contact-us .input-field{
     width: 100%;
     margin-bottom: 25px !important;
     
 }
-.input-field label{
+.contact-us .input-field label{
     color: white;
 }
-.input-field input{
+.contact-us .input-field input{
     color: white;
 }
-.input-field input::placeholder{
+.contact-us .input-field input::placeholder{
     color: white;
 } 
 /* Contact Us */

@@ -10,7 +10,6 @@ import '../App.css'
 import '../styles/pages/landingPage.css'
 import { motion } from 'framer-motion';
 import { TextField } from '@mui/material';
-import { Email } from '@mui/icons-material';
 
 
 const Landing = () => {
