@@ -1,0 +1,128 @@
+.bill {
+    max-width: 1150px;
+    margin: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bill .bill-desc {
+    display: flex;
+}
+
+.bill .bill-img {
+    margin-right: 15px;
+}
+
+.bill .bill-img img {
+    max-width: 100%;
+}
+
+.bill .bill-info {
+    flex: 0 0 75%;
+}
+
+.bill .bill-name {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--mainColor);
+}
+
+.bill .bill-data,
+.bill .bill-payment,
+.bill .bill-date {
+    display: flex;
+    flex-direction: column;
+}
+
+.bill .bill-payment,
+.bill .bill-date {
+    margin-bottom: 35px;
+}
+
+.bill .bill-data .bill-category,
+.bill .bill-data .service-provider,
+.bill .bill-payment .bill-price,
+.bill .bill-payment .bill-status,
+.bill .bill-date .bill-issued-date,
+.bill .bill-date .bill-payment-date {
+    flex: 0 0 50%;
+    
+}
+
+.bill .bill-data .bill-category,
+.bill .bill-payment .bill-price,
+.bill .bill-date .bill-issued-date{
+    margin-bottom: 35px;
+}
+
+.bill .bill-data .bill-category span,
+.bill .bill-data .service-provider span,
+.bill .bill-payment .bill-price span,
+.bill .bill-payment .bill-status span,
+.bill .bill-date .bill-issued-date span,
+.bill .bill-date .bill-payment-date span {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--mainColor);
+}
+
+.bill .separator {
+    width: 100%;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    height: 1px;
+    background-color: var(--mainColor);
+}
+
+.bill .pay-btn {
+    background-color: var(--mainColor);
+    width: 100%;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (max-width:599px) {
+    .bill .bill-desc {
+        flex-direction: column;
+    }
+    .bill .bill-img{
+        text-align: center;
+    }
+}
+
+@media (min-width:600px) {
+    .bill .bill-payment {
+        flex-direction: row;
+    }
+
+    .bill .bill-payment .bill-price {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width:900px) {
+    .bill .bill-img{
+        margin-right: 25px;
+    }
+
+    .bill .bill-data,
+    .bill .bill-date {
+        flex-direction: row;
+    }
+
+    .bill .bill-data .bill-category,
+    .bill .bill-date .bill-issued-date{
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width:1200px) {}
+
+@media (min-width:1536px) {}
