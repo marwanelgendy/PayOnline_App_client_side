@@ -1,11 +1,11 @@
 import { Container } from '@mui/system';
 import React from 'react';
-import landingImg from '../imgs/homePage/home1.jpg'
-import payBills from '../imgs/homePage/home3.png'
-import money from '../imgs/homePage/home2.png'
-import charge from '../imgs/homePage/howToUse1.png'
-import select from '../imgs/homePage/howToUse2.png'
-import done from '../imgs/homePage/howToUse3.png'
+import landingImg from '../imgs/landingPage/home1.jpg'
+import payBills from '../imgs/landingPage/home3.png'
+import money from '../imgs/landingPage/home2.png'
+import charge from '../imgs/landingPage/howToUse1.png'
+import select from '../imgs/landingPage/howToUse2.png'
+import done from '../imgs/landingPage/howToUse3.png'
 import '../App.css'
 import '../styles/pages/landingPage.css'
 import { motion } from 'framer-motion';
