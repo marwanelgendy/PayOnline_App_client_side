@@ -8,7 +8,7 @@ import noTransfers from '../imgs/homePage/transfer.png'
 import elec from '../imgs/billPage/electric.png'
 import left from '../imgs/transferPage/left.png'
 import Transfer from '../components/transfer';
-import Bill from '../components/bill';
+import Bill from '../components/bill_Home';
 
 const HomePage = () => {
     const [bills, setBills] = useState([]);

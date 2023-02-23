@@ -1,6 +1,8 @@
 import './App.css';
+import Bill from './components/bill';
 import NavBar from './components/navBar';
 import BillPage from './pages/billPage';
+import BillsPage from './pages/billsPage';
 import ContactUsPage from './pages/contact_usPage';
 import HomePage from './pages/homePage';
 import Landing from './pages/landing';
@@ -13,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <NavBar login={true} />
-      <TransferMoneyPage />
+      <BillsPage />
     </div>
   );
 }
