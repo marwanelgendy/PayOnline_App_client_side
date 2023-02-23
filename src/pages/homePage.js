@@ -7,6 +7,8 @@ import noBills from '../imgs/homePage/bill.png'
 import noTransfers from '../imgs/homePage/transfer.png'
 import elec from '../imgs/billPage/electric.png'
 import left from '../imgs/transferPage/left.png'
+import Transfer from '../components/transfer';
+import Bill from '../components/bill';
 
 const HomePage = () => {
     const [bills, setBills] = useState([]);
@@ -27,22 +29,7 @@ const HomePage = () => {
 
                         {bills.length == 0 &&
 
-                            <div className='bill-item'>
-                                <div className="bill-img">
-                                    <img src={elec} alt="elec" />
-                                </div>
-                                <div className="bill-info">
-                                    <div className="bill-name">Electric Bill</div>
-                                    <div className="bill-price-status">
-                                        <div className="bill-price">
-                                            Price: <span>100$</span>
-                                        </div>
-                                        <div className="bill-status">
-                                            Status: <span>Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <Bill />
 
                         }
                     </div>
@@ -57,17 +44,7 @@ const HomePage = () => {
                             </div>
                         } */}
 
-                        <div className='transfer-item'>
-                            <div className="transfer-img">
-                                <img src={left} alt="elec" />
-                            </div>
-                            <div className="transfer-info">
-                                <div className="transfer-name">Electric Bill</div>
-                                <div className="transfer-price">
-                                    Amount: <span>100$</span>
-                                </div>
-                            </div>
-                        </div>
+                       <Transfer/>
 
                     </div>
                 </div>
