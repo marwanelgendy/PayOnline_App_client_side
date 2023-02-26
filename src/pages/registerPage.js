@@ -1,21 +1,72 @@
-import { AccountCircle, LockOpen, PasswordOutlined} from '@mui/icons-material';
-import { TextField , Button } from '@mui/material';
+import { AccountCircle, LockOpen, PasswordOutlined } from '@mui/icons-material';
+import { TextField, Button } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import React, { useState } from 'react';
 import '../App.css'
 import '../styles/pages/loginPage.css'
 import login from '../imgs/loginPage/register.jpg'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import { useAlert } from 'react-alert'
 
 const RegisterPage = () => {
-    const [userName , setUserName] = useState("")
-    const [password , SetPassword] = useState("")
+    const [userName, setUserName] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [secondName, setSecondName] = useState("")
+    const [password, SetPassword] = useState("")
 
-    const onChangeUserName = (event)=>{
+    const navigate = useNavigate()
+    const alert = useAlert()
+
+    const onChangeUserName = (event) => {
         setUserName(event.target.value)
     }
+    const onChangeFirstName = (event) => {
+        setFirstName(event.target.value)
+    }
+    const onChangeSecondName = (event) => {
+        setSecondName(event.target.value)
+    }
 
-    const onChangePassword = (event)=>{
+    const onChangePassword = (event) => {
         SetPassword(event.target.value)
+    }
+
+    const showAlert = (msg) => {
+        alert.show(msg)
+    }
+
+    const checkInput = () => {
+        if (userName == "" || firstName == "" || secondName == "" || password == "") {
+            return false
+        }
+        return true;
+    }
+
+    const register = () => {
+
+        if (checkInput()) {
+            axios.post('http://localhost:4300/register', {
+                username: userName,
+                firstname: firstName,
+                secondname: secondName,
+                password: password
+            })
+            .then(response => {
+                const status = response.data.status
+                
+                if (status == 'Success') {
+                    navigate("/successful-registeration")
+                }
+            })
+            .catch(err => {
+                const msg = err.response.data.message
+                showAlert(msg)
+            })
+        }
+        else{
+            showAlert("All fields are required")
+        }
     }
 
     return (
@@ -23,21 +74,43 @@ const RegisterPage = () => {
             <Container>
                 <div className='login-container'>
                     <div className="form">
-                        <LockOpen className='icon'/>
-                        <Box  className="box">
+                        <LockOpen className='icon' />
+                        <Box className="box">
                             <AccountCircle sx={{ color: '#2192FF', mr: 1, my: 0.5 }} />
-                            <TextField  
-                                id="input-with-sx" 
-                                className="input-field" 
-                                label="Username" 
+                            <TextField
+                                id="input-with-sx"
+                                className="input-field"
+                                label="Username"
                                 variant="standard"
                                 value={userName}
-                                onChange={onChangeUserName} 
+                                onChange={onChangeUserName}
+                            />
+                        </Box>
+                        <Box className="box">
+                            <AccountCircle sx={{ color: '#2192FF', mr: 1, my: 0.5 }} />
+                            <TextField
+                                id="input-with-sx"
+                                className="input-field"
+                                label="First Name"
+                                variant="standard"
+                                value={firstName}
+                                onChange={onChangeFirstName}
+                            />
+                        </Box>
+                        <Box className="box">
+                            <AccountCircle sx={{ color: '#2192FF', mr: 1, my: 0.5 }} />
+                            <TextField
+                                id="input-with-sx"
+                                className="input-field"
+                                label="Second Name"
+                                variant="standard"
+                                value={secondName}
+                                onChange={onChangeSecondName}
                             />
                         </Box>
                         <Box className="box">
                             <PasswordOutlined sx={{ color: '#2192FF', mr: 1, my: 0.5 }} />
-                            <TextField 
+                            <TextField
                                 id="input-with-sx"
                                 className="input-field"
                                 label="Password"
@@ -47,10 +120,10 @@ const RegisterPage = () => {
                                 value={password}
                             />
                         </Box>
-                        <Button className='login-btn' variant="contained">Register</Button>
+                        <Button className='login-btn' variant="contained" onClick={register} >Register</Button>
                     </div>
                     <div className="login-img">
-                        <img src={login} alt="login"/>
+                        <img src={login} alt="login" />
                     </div>
                 </div>
             </Container>

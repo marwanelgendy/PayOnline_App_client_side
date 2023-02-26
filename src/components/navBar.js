@@ -1,27 +1,32 @@
-import { Button} from '@mui/material';
+import { Button } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import logo from '../imgs/main_logo.png'
 import '../App.css'
 import '../styles/components/navBar.css'
 import { AccountCircleTwoTone, MenuOutlined } from '@mui/icons-material';
-import { useState } from 'react';
+import { useState , useContext } from 'react';
+import { Link } from 'react-router-dom';
 
-const NavBar = ({ login }) => {
+import {isLoggedContext} from '../App'
 
-    const [menuStyle, setmenuStyle] = useState({ left : '-100%' });
-    const [profileMenuStyle, setprofileMenuStyle] = useState({ display : 'none' });
+const NavBar = () => {
 
-    let openCloseMenu = ()=>{
-        if(menuStyle.left == '-100%')
-            setmenuStyle({left : '0'})
+    const isLogged =  useContext(isLoggedContext);
+    
+    const [menuStyle, setmenuStyle] = useState({ left: '-100%' });
+    const [profileMenuStyle, setprofileMenuStyle] = useState({ display: 'none' });
+
+    let openCloseMenu = () => {
+        if (menuStyle.left == '-100%')
+            setmenuStyle({ left: '0' })
         else
-            setmenuStyle({left : '-100%' })
+            setmenuStyle({ left: '-100%' })
     }
 
-    let openCloseProfileMenu = ()=>{
-        profileMenuStyle.display == 'none' ? setprofileMenuStyle({display : 'block'})
-                                                : setprofileMenuStyle({display : 'none'})
+    let openCloseProfileMenu = () => {
+        profileMenuStyle.display == 'none' ? setprofileMenuStyle({ display: 'block' })
+            : setprofileMenuStyle({ display: 'none' })
     }
 
     return (
@@ -29,29 +34,35 @@ const NavBar = ({ login }) => {
             <Container maxWidth="xl">
                 <div className="header">
 
-                    {login && <MenuOutlined onClick={openCloseMenu} fontSize='large' className='menu-icon'/>}
+                    {isLogged && <MenuOutlined onClick={openCloseMenu} fontSize='large' className='menu-icon' />}
 
                     <div className="logo">
                         <img src={logo} alt="logo" />
                     </div>
 
-                    {!login && <div className='log-reg'>
-                        <Button className='btn'>Login</Button>
-                        <Button className='btn'>Register</Button>
+                    {!isLogged && <div className='log-reg'>
+                        <Button className='btn'>
+                            <Link to="/login">Login</Link>
+                        </Button>
+                        <Button className='btn'>
+                            <Link to="/register">Register</Link>
+                        </Button>
                     </div>}
 
-                    {login && <div style={menuStyle} className='nav-bar'>
+                    {isLogged && <div style={menuStyle} className='nav-bar'>
                         <ul className='links'>
-                            <li className='list-item'>Home</li>
+                            <li className='list-item'>
+                                <Link to="/home" >Home</Link>
+                            </li>
                             <li className='list-item'>Pay Bills</li>
                             <li className='list-item'>Transfer Money</li>
                             <li className='list-item'>Contact Us</li>
                         </ul>
                     </div>}
 
-                    {login &&
+                    {isLogged &&
                         <div className='profile'>
-                            <AccountCircleTwoTone onClick={openCloseProfileMenu}  fontSize='large' className='profile-icon' />
+                            <AccountCircleTwoTone onClick={openCloseProfileMenu} fontSize='large' className='profile-icon' />
 
                             <div style={profileMenuStyle} className='profile-menu'>
                                 <p className="profile-menu-item">My Profile</p>
