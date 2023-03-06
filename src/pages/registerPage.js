@@ -1,13 +1,14 @@
 import { AccountCircle, LockOpen, PasswordOutlined } from '@mui/icons-material';
 import { TextField, Button } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import React, { useState } from 'react';
+import React, { useState , useContext , useEffect } from 'react';
 import '../App.css'
 import '../styles/pages/loginPage.css'
 import login from '../imgs/loginPage/register.jpg'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from 'react-alert'
+import {isLoggedContext} from '../App'
 
 const RegisterPage = () => {
     const [userName, setUserName] = useState("")

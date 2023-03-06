@@ -9,7 +9,7 @@ import { useAlert } from 'react-alert'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({setLogIn}) => {
 
     const [userName, setUserName] = useState("")
     const [password, SetPassword] = useState("")
@@ -44,8 +44,11 @@ const LoginPage = () => {
             })
             .then(response => {
                 const status = response.data.status
+                const userID = response.data.user._id
 
                 if (status == 'Success') {
+                    setLogIn(true , userID)
+                    localStorage.setItem('userId' , userID)
                     navigate('/home')
                 }
             })

@@ -1,31 +1,33 @@
 import React from 'react';
 import '../styles/components/bill.css'
-import elec from '../imgs/billPage/electric.png'
+import {billImages} from '../utilities/imagePaths'
 import { Button } from '@mui/material';
+import { useState } from 'react';
 
-const Bill = () => {
+const Bill = ({bill}) => {
+
     return (
-        <div className='bill-component'>
+        <div  className='bill-component'>
             <div className="bill-img">
-                <img src={elec} alt="elec" />
+                <img src={billImages[bill.category]} alt="elec" />
             </div>
             <div className="bill-info">
-                <div className="bill-name">Electric Bill</div>
+                <div className="bill-name">{bill.name}</div>
                 <div className='bill-details'>
                     <div className="bill-price-status">
                         <div className="bill-price">
-                            Price: <span>100$</span>
+                            Price: <span>{bill.price}</span>
                         </div>
                         <div className="bill-status">
-                            Status: <span>Active</span>
+                            Status: <span style={bill.status == "Active" ? {color : "#4ee44e  "} :{color : "#d32f2f"}}>{bill.status}</span>
                         </div>
                     </div>
                     <div className="bill-date-category">
                         <div className="bill-category">
-                            Category: <span>Electric</span>
+                            Category: <span>{bill.category}</span>
                         </div>
                         <div className="bill-date">
-                            Issued Date: <span>25-12-2022</span>
+                            Issued Date: <span>{bill.issuedDate}</span>
                         </div>
                     </div>
                 </div>

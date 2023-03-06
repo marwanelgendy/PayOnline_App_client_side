@@ -1,15 +1,15 @@
 import React from 'react';
-import left from '../imgs/transferPage/left.png'
-const Transfer = () => {
+import {transferImages} from '../utilities/imagePaths'
+const Transfer = ({transfer}) => {
     return (
         <div className='transfer-item'>
             <div className="transfer-img">
-                <img src={left} alt="elec" />
+                <img src={transferImages[transfer.type]} alt="elec" />
             </div>
             <div className="transfer-info">
-                <div className="transfer-name">Electric Bill</div>
+                <div className="transfer-name">{transfer.name}</div>
                 <div className="transfer-price">
-                    Amount: <span>100$</span>
+                    Amount: <span>{transfer.Amount}</span>
                 </div>
             </div>
         </div>

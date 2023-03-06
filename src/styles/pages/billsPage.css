@@ -1,9 +1,101 @@
-.bills-page{
-    max-width: 1100px;
-    margin: auto;
+.bills-page {
+    display: flex;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.bills-page .filter-btn{
+    cursor: pointer;
+    position: absolute;
+    right: -51px;
+    padding: 8px;
+    color: white;
+    z-index: 5;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 6%) 0px 1px 2px 0px;
+    background-color: var(--mainColor);
+    border-radius: 0 8px 8px 0;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transition: .3s;
+
+    background-color: white;
+    z-index: 1;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 1px 3px 1px;
+}
+
+.bills-page .filters .filter-title{
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--mainColor);
+}
+
+.bills-page .filters .filter-title .filter-icon{
+    margin-right: 4px;
+}
+
+.bills-page .filters .category-filter,
+.bills-page .filters .status-filter,
+.bills-page .filters .date-filter{
+    margin-bottom: 15px;
+}
+.bills-page .filters .filter-container{
+    padding-left: 20px;
+}
+
+.bills-page .bill-container {
+    flex: 0 0 100%;
+    margin-left: auto;
+    margin-right: auto;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     padding: 30px 16px;
     border-radius: 10px;
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+.bill-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bill-container::-webkit-scrollbar-thumb {
+    background-color: var(--mainColor);
+    border-radius: 8px;
+}
+
+@media (max-width:599px) {
+
+}
+@media (min-width:600px) {
+     /* .bills-page .filter-btn{
+        right : -44px
+     } */
+}
+@media (min-width:900px) {
+    .bills-page .filter-btn{
+        display: none;
+    }
+    .filters {
+        position: relative;
+        left: 0 !important;
+    }
+    .bills-page .bill-container {
+        flex: 0 0 65%;
+    }
+}
+@media (min-width:1200px) {
+
+}
+@media (min-width:1536px) {
+
 }

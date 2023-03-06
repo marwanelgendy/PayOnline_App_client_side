@@ -54,7 +54,7 @@ const NavBar = () => {
                             <li className='list-item'>
                                 <Link to="/home" >Home</Link>
                             </li>
-                            <li className='list-item'>Pay Bills</li>
+                            <li className='list-item'><Link to="/paybills" >Pay Bills</Link></li>
                             <li className='list-item'>Transfer Money</li>
                             <li className='list-item'>Contact Us</li>
                         </ul>

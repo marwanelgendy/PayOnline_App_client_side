@@ -57,11 +57,30 @@
     max-width: 65%;
 }
 
+.home .bills-container,
+.home .transfers-container{
+    height:  64vh;
+    overflow-y: scroll;
+}
+
+.home .bills-container::-webkit-scrollbar ,
+.home .transfers-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.home .bills-container::-webkit-scrollbar-thumb ,
+.home .transfers-container::-webkit-scrollbar-thumb {
+    background-color: var(--mainColor);
+    border-radius: 8px;
+}
+
 .home .bills-container .bill-item,
 .home .transfers-container .transfer-item {
     display: flex;
     position: relative;
     padding-bottom: 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .home .transfers-container .transfer-item {

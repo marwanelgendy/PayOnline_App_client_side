@@ -21,6 +21,10 @@ function App() {
 
   const [isLogged, setIsLogged] = useState(false);
 
+  const setLogIn = (isLogged)=>{
+    setIsLogged(isLogged);
+  }
+
   return (
     <Router>
       <isLoggedContext.Provider value={isLogged}>
@@ -28,10 +32,12 @@ function App() {
           <NavBar />
           <Routes>
             <Route exact path='/' element={<Landing />} ></Route>
-            <Route exact path='/login' element={<LoginPage />} ></Route>
+            <Route exact path='/login' element={<LoginPage setLogIn = {setLogIn} />} ></Route>
             <Route exact path='/register' element={<RegisterPage />} ></Route>
             <Route exact path='/home' element={<HomePage />} ></Route>
             <Route exact path='/successful-registeration' element={<SuccessfulRegister />} ></Route>
+            <Route exact path='/paybills' element={<BillsPage />} ></Route>
+            <Route exact path='/bill/:billId' element={<BillPage />} ></Route>
 
           </Routes>
 

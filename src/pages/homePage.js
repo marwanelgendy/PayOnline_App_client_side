@@ -1,6 +1,6 @@
 import { Container } from '@mui/system';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../App.css';
 import '../styles/pages/homePage.css'
 import noBills from '../imgs/homePage/bill.png'
@@ -9,10 +9,23 @@ import elec from '../imgs/billPage/electric.png'
 import left from '../imgs/transferPage/left.png'
 import Transfer from '../components/transfer';
 import Bill from '../components/bill_Home';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const [bills, setBills] = useState([]);
     const [transfers, setTransfers] = useState([]);
+
+    useEffect(() => {
+
+        const userId = localStorage.getItem('userId')
+        axios.get(`http://localhost:4300/getUser/${userId}`)
+        .then(response => {
+            setBills(response.data.user.bills)
+            setTransfers(response.data.user.transfers)
+        })
+
+    }, []);
 
     return (
         <Container maxWidth='xl'>
@@ -20,31 +33,42 @@ const HomePage = () => {
                 <div className="bills">
                     <div className="sec-title">Bills</div>
                     <div className="bills-container">
-                        {/* {bills.length == 0 && 
-                        
+                        {bills.length == 0 &&
+
                             <div className='no-bills'>
                                 <img src={noBills} alt="No Bills" />
                             </div>
-                        } */}
+                        }
 
-                        {bills.length == 0 &&
+                        {bills.length > 0 &&
 
-                            <Bill />
-
+                            bills.map((bill,index) =>(
+                                <Link to={`/bill/${bill._id}`} key={index}>
+                                    <Bill  bill={bill}/>
+                                </Link>
+                            ))
                         }
                     </div>
                 </div>
                 <div className="transfers">
                     <div className="sec-title">Transfers</div>
                     <div className="transfers-container">
-                        {/* {transfers.length == 0 && 
-                            
+                        {transfers.length == 0 &&
+
                             <div className='no-transfers'>
                                 <img src={noTransfers} alt="No Transfers" />
                             </div>
-                        } */}
+                        }
 
-                       <Transfer/>
+                        {transfers.length > 0 &&
+
+                            transfers.map((transfer,index) => (
+                                <Link to={`/transfer/${transfer._id}`} key={index}>
+                                    <Transfer key={index} transfer={transfer} />
+                                </Link>
+                            ))
+
+                        }
 
                     </div>
                 </div>
