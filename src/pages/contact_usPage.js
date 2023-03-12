@@ -1,10 +1,22 @@
 import { Container } from '@mui/system';
-import React from 'react';
 import { TextField } from '@mui/material';
+import { useEffect } from 'react';
+import React from 'react';
 import support from '../imgs/contactusPage/support.jpg'
 import '../App.css'
 import '../styles/pages/contactusPage.css'
+
+import { useNavigate } from 'react-router-dom';
+
 const ContactUsPage = () => {
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        const id = localStorage.getItem('userId')
+        if(id == null) navigate('/')
+    },[])
+
     return (
 
         <div className='contact-us-container'>

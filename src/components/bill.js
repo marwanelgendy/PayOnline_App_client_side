@@ -3,6 +3,7 @@ import '../styles/components/bill.css'
 import {billImages} from '../utilities/imagePaths'
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Bill = ({bill}) => {
 
@@ -31,7 +32,7 @@ const Bill = ({bill}) => {
                         </div>
                     </div>
                 </div>
-                <Button variant='contained' className='view-btn'>View</Button>
+                <Link to={`/bill/${bill._id}`}><Button variant='contained' className='view-btn'>View</Button></Link>
             </div>
         </div>
     );

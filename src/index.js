@@ -20,7 +20,6 @@ const options ={
 
 const cssStyle={
   backgroundColor: '#d32f2f',
-  // border : '1px solid #d32f2f',
   padding: '16px 10px',
   display: 'flex',
   justifyContent: 'space-between',

@@ -7,17 +7,23 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Container } from '@mui/system';
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const BillsPage = () => {
     const [bills, setBills] = useState([]);
     const [filterStyle, setFilterStyle] = useState({ left: '-216px' });
 
+    const navigate = useNavigate()
+
     const openCloseFilters = () => {
         filterStyle.left == '-216px' ? setFilterStyle({ left: '0px' }) : setFilterStyle({ left: '-216px' })
     }
 
     useEffect(() => {
+
+        const id = localStorage.getItem('userId')
+        if(id == null) navigate('/')
 
         const userId = localStorage.getItem('userId')
         axios.get(`http://localhost:4300/getUser/${userId}`)
@@ -77,6 +83,7 @@ const BillsPage = () => {
                             <Bill key={index} bill={bill} />
                         ))
                     }
+
                 </div>
             </div>
         </Container>

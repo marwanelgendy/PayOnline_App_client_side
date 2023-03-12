@@ -38,6 +38,8 @@ function App() {
             <Route exact path='/successful-registeration' element={<SuccessfulRegister />} ></Route>
             <Route exact path='/paybills' element={<BillsPage />} ></Route>
             <Route exact path='/bill/:billId' element={<BillPage />} ></Route>
+            <Route exact path='/contactUs' element={<ContactUsPage />} ></Route>
+            <Route exact path='/transferMoney' element={<TransferMoneyPage />} ></Route>
 
           </Routes>
 

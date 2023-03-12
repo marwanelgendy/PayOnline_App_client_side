@@ -1,6 +1,7 @@
 import { Container } from '@mui/system';
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import '../styles/pages/homePage.css'
 import noBills from '../imgs/homePage/bill.png'
@@ -11,12 +12,16 @@ import Transfer from '../components/transfer';
 import Bill from '../components/bill_Home';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Recharge from '../components/recharge';
 
 const HomePage = () => {
     const [bills, setBills] = useState([]);
     const [transfers, setTransfers] = useState([]);
 
+    const navigate = useNavigate()
     useEffect(() => {
+        const id = localStorage.getItem('userId')
+        if(id == null) navigate('/')
 
         const userId = localStorage.getItem('userId')
         axios.get(`http://localhost:4300/getUser/${userId}`)
@@ -28,6 +33,7 @@ const HomePage = () => {
     }, []);
 
     return (
+       
         <Container maxWidth='xl'>
             <div className='home'>
                 <div className="bills">

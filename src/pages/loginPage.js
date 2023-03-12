@@ -47,7 +47,7 @@ const LoginPage = ({setLogIn}) => {
                 const userID = response.data.user._id
 
                 if (status == 'Success') {
-                    setLogIn(true , userID)
+                    setLogIn(true)
                     localStorage.setItem('userId' , userID)
                     navigate('/home')
                 }

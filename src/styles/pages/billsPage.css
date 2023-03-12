@@ -73,6 +73,15 @@
     border-radius: 8px;
 }
 
+.bills-page .bill-container .no-bills {
+    text-align: center;
+}
+
+.bills-page .bill-container .no-bills img{
+    opacity: .3;
+    max-width: 100%;
+}
+
 @media (max-width:599px) {
 
 }

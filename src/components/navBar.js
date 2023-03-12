@@ -5,7 +5,7 @@ import logo from '../imgs/main_logo.png'
 import '../App.css'
 import '../styles/components/navBar.css'
 import { AccountCircleTwoTone, MenuOutlined } from '@mui/icons-material';
-import { useState , useContext } from 'react';
+import { useState , useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import {isLoggedContext} from '../App'
@@ -14,8 +14,15 @@ const NavBar = () => {
 
     const isLogged =  useContext(isLoggedContext);
     
+    const [userId , setUserId] = useState(null)
     const [menuStyle, setmenuStyle] = useState({ left: '-100%' });
     const [profileMenuStyle, setprofileMenuStyle] = useState({ display: 'none' });
+
+    useEffect(() => {
+        
+        const id = localStorage.getItem('userId')
+        setUserId(id)
+    }, [isLogged]);
 
     let openCloseMenu = () => {
         if (menuStyle.left == '-100%')
@@ -34,13 +41,13 @@ const NavBar = () => {
             <Container maxWidth="xl">
                 <div className="header">
 
-                    {isLogged && <MenuOutlined onClick={openCloseMenu} fontSize='large' className='menu-icon' />}
+                    {userId != null && <MenuOutlined onClick={openCloseMenu} fontSize='large' className='menu-icon' />}
 
                     <div className="logo">
                         <img src={logo} alt="logo" />
                     </div>
 
-                    {!isLogged && <div className='log-reg'>
+                    {userId == null && <div className='log-reg'>
                         <Button className='btn'>
                             <Link to="/login">Login</Link>
                         </Button>
@@ -49,18 +56,18 @@ const NavBar = () => {
                         </Button>
                     </div>}
 
-                    {isLogged && <div style={menuStyle} className='nav-bar'>
+                    {userId != null && <div style={menuStyle} className='nav-bar'>
                         <ul className='links'>
                             <li className='list-item'>
                                 <Link to="/home" >Home</Link>
                             </li>
                             <li className='list-item'><Link to="/paybills" >Pay Bills</Link></li>
-                            <li className='list-item'>Transfer Money</li>
-                            <li className='list-item'>Contact Us</li>
+                            <li className='list-item'><Link to={"/transferMoney"}>Transfer Money</Link></li>
+                            <li className='list-item'><Link to={"/contactUs"}>Contact Us</Link></li>
                         </ul>
                     </div>}
 
-                    {isLogged &&
+                    {userId != null &&
                         <div className='profile'>
                             <AccountCircleTwoTone onClick={openCloseProfileMenu} fontSize='large' className='profile-icon' />
 
