@@ -29,7 +29,7 @@ function App() {
     <Router>
       <isLoggedContext.Provider value={isLogged}>
         <div className="App">
-          <NavBar />
+          <NavBar setLogIn = {setLogIn} />
           <Routes>
             <Route exact path='/' element={<Landing />} ></Route>
             <Route exact path='/login' element={<LoginPage setLogIn = {setLogIn} />} ></Route>

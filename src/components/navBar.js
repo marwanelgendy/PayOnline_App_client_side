@@ -9,8 +9,9 @@ import { useState , useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import {isLoggedContext} from '../App'
+import { useNavigate } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({setLogIn}) => {
 
     const isLogged =  useContext(isLoggedContext);
     
@@ -18,22 +19,31 @@ const NavBar = () => {
     const [menuStyle, setmenuStyle] = useState({ left: '-100%' });
     const [profileMenuStyle, setprofileMenuStyle] = useState({ display: 'none' });
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         
         const id = localStorage.getItem('userId')
         setUserId(id)
     }, [isLogged]);
 
-    let openCloseMenu = () => {
+    const openCloseMenu = () => {
         if (menuStyle.left == '-100%')
             setmenuStyle({ left: '0' })
         else
             setmenuStyle({ left: '-100%' })
     }
 
-    let openCloseProfileMenu = () => {
+    const openCloseProfileMenu = () => {
         profileMenuStyle.display == 'none' ? setprofileMenuStyle({ display: 'block' })
             : setprofileMenuStyle({ display: 'none' })
+    }
+
+    const logout = ()=>{
+        localStorage.clear('userId')
+        setLogIn(false)
+        setprofileMenuStyle({ display: 'none' })
+        navigate("/")
     }
 
     return (
@@ -73,7 +83,7 @@ const NavBar = () => {
 
                             <div style={profileMenuStyle} className='profile-menu'>
                                 <p className="profile-menu-item">My Profile</p>
-                                <p className="profile-menu-item">Logout</p>
+                                <p onClick={logout} className="profile-menu-item">Logout</p>
                             </div>
                         </div>
                     }

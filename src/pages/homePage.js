@@ -27,7 +27,11 @@ const HomePage = () => {
         axios.get(`http://localhost:4300/getUser/${userId}`)
         .then(response => {
             setBills(response.data.user.bills)
-            setTransfers(response.data.user.transfers)
+        })
+
+        axios.get('http://localhost:4300/getTransfers' , {params : {id : userId}})
+        .then(response => {
+            setTransfers(response.data.transfer.reverse())
         })
 
     }, []);
@@ -59,7 +63,7 @@ const HomePage = () => {
                 <div className="transfers">
                     <div className="sec-title">Transfers</div>
                     <div className="transfers-container">
-                        {transfers.length == 0 &&
+                         {transfers.length == 0 &&
 
                             <div className='no-transfers'>
                                 <img src={noTransfers} alt="No Transfers" />
@@ -69,9 +73,7 @@ const HomePage = () => {
                         {transfers.length > 0 &&
 
                             transfers.map((transfer,index) => (
-                                <Link to={`/transfer/${transfer._id}`} key={index}>
-                                    <Transfer key={index} transfer={transfer} />
-                                </Link>
+                                <Transfer key={index} transfer={transfer} />
                             ))
 
                         }

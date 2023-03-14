@@ -74,14 +74,94 @@
     padding: 8px 0;
 }
 
-@media (max-width:599px) {}
+.transfer-money .latest-transfer .transfer-item{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
 
-@media (min-width:600px) {}
+.transfer-money .latest-transfer .transfer-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background-color: #777;
+    transition: .3s;
+}
+
+.transfer-money .latest-transfer .transfer-item .transfer-img {
+    margin-right: 20px;
+}
+
+.transfer-money .latest-transfer .transfer-item .transfer-img img {
+    max-width: 100%;
+}
+
+.transfer-money .latest-transfer .transfer-item .transfer-info {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 80%;
+    padding-left: 20px;
+}
+.transfer-money .latest-transfer .transfer-item .transfer-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--mainColor);
+    margin-right: 70px;
+    margin-bottom: 10px;
+}
+.transfer-money .latest-transfer .transfer-item .transfer-price{
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.transfer-money .latest-transfer .transfer-item .transfer-price .transfer-date{
+    margin-left: 70px;
+}
+.transfer-money .latest-transfer .transfer-item span {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--mainColor);
+}
+
+
+@media (max-width:599px) {
+    .transfer-money .latest-transfer .transfer-item .transfer-name {
+        font-size: 22px;
+    }
+
+    .transfer-money .latest-transfer .transfer-item .transfer-info {
+        
+        padding-left: 0;
+    }
+
+    .transfer-money .latest-transfer .transfer-item .transfer-price .transfer-date{
+        margin-left: 0;
+    }
+}
+
+@media (min-width:600px) {
+    
+}
 
 @media (min-width:900px) {
     .transfer-money .send-balance-container {
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .transfer-money .latest-transfer .transfer-item .transfer-info{
+        flex-direction: row;
+    }
+
+    .transfer-money .latest-transfer .transfer-item .transfer-name {
+        margin-bottom: 0;
     }
 }
 

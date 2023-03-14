@@ -8,12 +8,14 @@ import { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAlert } from 'react-alert'
+import Transfer from '../components/transfer';
 
 const TransferMoneyPage = () => {
     const [recharegStyle, setRecharegStyle] = useState({left : '-100%'});
     const [user , setUser] = useState({});
     const [userName , setUserName] = useState('')
     const [amount , setAmount] = useState('')
+    const [transfers , setTransfers] = useState([])
 
     const navigate = useNavigate()
     const alert = useAlert()
@@ -25,6 +27,11 @@ const TransferMoneyPage = () => {
         axios.get(`http://localhost:4300/getUser/${id}`)
         .then(response =>{
             setUser(response.data.user)
+        })
+
+        axios.get('http://localhost:4300/getTransfers' , {params : {id : id}})
+        .then(response => {
+            setTransfers(response.data.transfer.reverse().slice(0,3))
         })
     }, []);
 
@@ -40,6 +47,10 @@ const TransferMoneyPage = () => {
         setRecharegStyle({left : '0'})
     }
 
+    const closeRechargeComp = ()=>{
+        setRecharegStyle({left : '-100%'})
+    }
+
     const updateUserBalance = (amount)=>{
         axios.post(`http://localhost:4300/updateBalance/${user._id}` , {
                 "balance" : amount + user.balance
@@ -53,9 +64,40 @@ const TransferMoneyPage = () => {
             })
     }
 
+    const updateRecieverBalance = (amount , oldBalance , recieverId)=>{
+        axios.post(`http://localhost:4300/updateBalance/${recieverId}` , {
+                "balance" : amount + oldBalance
+        })
+    }
+
+    const addTransfer = (amount , recieverId)=>{
+        
+        axios.post('http://localhost:4300/addTransfer' , {
+            "Amount" : amount,
+            "sender" : user._id,
+            "reciever" : recieverId,
+            "date" : new Date().toLocaleDateString() 
+        })
+    }
+
+    const getReciever = ()=>{
+        axios.get('http://localhost:4300/getUserByName' , {params : {username : userName}})
+        .then(response =>{
+
+            addTransfer(parseInt(amount) , response.data.user._id)
+
+            updateRecieverBalance(parseInt(amount) , response.data.user.balance , response.data.user._id)
+        })
+        .catch(error => {
+            alert.show(error.response.data.message)
+            return false
+        })
+
+        return true
+    }
+
     const rechargeAccount = (amount)=>{
         amount = parseInt(amount)
-        console.log(amount)
 
         if(amount > 5000){
             alert.show("You can't charge you account with amount higher than 5000$")
@@ -70,10 +112,6 @@ const TransferMoneyPage = () => {
             updateUserBalance(amount)
             setRecharegStyle({left : '-100%'})
         }
-    }
-
-    const closeRechargeComp = ()=>{
-        setRecharegStyle({left : '-100%'})
     }
 
     const CheckInput = ()=>{
@@ -91,21 +129,9 @@ const TransferMoneyPage = () => {
     const sendMoney = ()=>{
         if(!CheckInput()) return
 
-        axios.get('http://localhost:4300/getUserByName' , {params : {username : userName}})
-        .then(response =>{
-            const recieverId = response.data.user._id
-            const oldBalance = response.data.user.balance
-
-            axios.post(`http://localhost:4300/updateBalance/${recieverId}` , {
-                "balance" : parseInt(amount) + oldBalance
-            })
-        })
-        .catch(error => {
-            alert.show(error.response.data.message)
-        })
+        if(!getReciever()) return
 
         updateUserBalance(parseInt(amount)* -1)
-
     }
 
     return (
@@ -133,6 +159,10 @@ const TransferMoneyPage = () => {
                     </div>
                     <div className='latest-transfer'>
                         <div className="title">Latest Transfers</div>
+
+                        {transfers.map(transfer => (
+                            <Transfer transfer={transfer} />
+                        ))}
                     </div>
                 </div>
             </Container>

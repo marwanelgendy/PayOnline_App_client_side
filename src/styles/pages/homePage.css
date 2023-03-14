@@ -146,6 +146,10 @@
     margin-bottom: 10px;
 }
 
+.home .transfers-container .transfer-item .transfer-name{
+    font-size: 22px;
+}
+
 .home .bills-container .bill-item .bill-price-status {
     display: flex;
     flex-direction: column;
@@ -160,6 +164,10 @@
 .home .bills-container .bill-item .bill-status {
     font-size: 18px;
     font-weight: 500;
+}
+
+.home .transfers-container .transfer-item .transfer-price .transfer-date{
+    margin-top: 10px;
 }
 
 .home .bills-container .bill-item span,
@@ -186,6 +194,11 @@
     .home .bills-container .bill-item .bill-price {
         margin-bottom: 0;
     }
+
+    .home .transfers-container .transfer-item .transfer-info {
+        flex-direction: row;
+       align-items: center;
+    }
 }
 
 @media (min-width:900px) {
@@ -201,6 +214,11 @@
 
     .home .transfers {
         flex: 0 0 39%;
+    }
+
+    .home .transfers-container .transfer-item .transfer-info {
+        flex-direction: column;
+        align-items: start;
     }
 }
 
