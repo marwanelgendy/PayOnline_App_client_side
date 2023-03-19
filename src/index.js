@@ -13,7 +13,6 @@ import CloseIcon from '@mui/icons-material/Close';
 const options ={
   position : positions.TOP_CENTER,
   timeout: 5000,
-  type : types.ERROR,
   offset : '30px',
   transition: transitions.FADE
 }
@@ -31,9 +30,7 @@ const cssStyle={
 }
 
 const AlertTemplate = ({ style, options, message, close }) => (
-  <div style={{...style ,  ...cssStyle  }}>
-    {options.type === 'info' && <ErrorOutlineIcon color='error' />}
-    {options.type === 'success' && <ErrorOutlineIcon color='error' />}
+  <div style={{...style ,  ...cssStyle}}>
     {options.type === 'error' && <ErrorOutlineIcon sx={{marginRight : '8px'}}  />}
     {message}
     <CloseIcon onClick={close} sx={{cursor : 'pointer' , marginLeft : '8px'}} />

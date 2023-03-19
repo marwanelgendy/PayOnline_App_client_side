@@ -9,9 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAlert } from 'react-alert'
 import Transfer from '../components/transfer';
+import SuccessfulOperation from '../components/successful_operation';
 
 const TransferMoneyPage = () => {
     const [recharegStyle, setRecharegStyle] = useState({left : '-100%'});
+    const [successfulOperationStyle, setSuccessfulOperationStyle] = useState({top : '-100%'});
     const [user , setUser] = useState({});
     const [userName , setUserName] = useState('')
     const [amount , setAmount] = useState('')
@@ -49,6 +51,10 @@ const TransferMoneyPage = () => {
 
     const closeRechargeComp = ()=>{
         setRecharegStyle({left : '-100%'})
+    }
+
+    const closeSuccessComp = ()=>{
+        setSuccessfulOperationStyle({top : '-100%'})
     }
 
     const updateUserBalance = (amount)=>{
@@ -111,6 +117,7 @@ const TransferMoneyPage = () => {
         else{
             updateUserBalance(amount)
             setRecharegStyle({left : '-100%'})
+            setSuccessfulOperationStyle({top : '0'})
         }
     }
 
@@ -136,6 +143,7 @@ const TransferMoneyPage = () => {
 
     return (
         <div>
+            <SuccessfulOperation successStyle={successfulOperationStyle} closeSuccessComp={closeSuccessComp} msg={"The amount has been added successfully"} />
             <Recharge rechargeStyle={recharegStyle}  rechargeAccount={rechargeAccount} closeRechargeComp={closeRechargeComp}/>
             <Container maxWidth='xl'>
                 <div className='transfer-money'>

@@ -53,6 +53,10 @@
     padding-left: 20px;
 }
 
+.bills-page .filters .apply-btn{
+    margin-bottom: 15px;
+}
+
 .bills-page .bill-container {
     flex: 0 0 100%;
     margin-left: auto;
@@ -60,7 +64,7 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     padding: 30px 16px;
     border-radius: 10px;
-    height: 75vh;
+    height: 80vh;
     overflow-y: scroll;
 }
 
