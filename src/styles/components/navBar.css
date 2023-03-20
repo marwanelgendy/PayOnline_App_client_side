@@ -89,6 +89,7 @@
         width: 100%;
         background-color: var(--mainColor);
         transition: .3s;
+        z-index: 50;
     }
     .nav-bar .links .list-item{
         padding: 16px;

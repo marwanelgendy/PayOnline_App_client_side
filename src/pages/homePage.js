@@ -26,7 +26,8 @@ const HomePage = () => {
         const userId = localStorage.getItem('userId')
         axios.get(`http://localhost:4300/getUser/${userId}`)
         .then(response => {
-            setBills(response.data.user.bills)
+            let arr = response.data.user.bills.reverse().filter(bill => bill.status === 'Active')
+            setBills(arr)
         })
 
         axios.get('http://localhost:4300/getTransfers' , {params : {id : userId}})

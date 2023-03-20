@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const options ={
   position : positions.TOP_CENTER,
   timeout: 5000,
+  type: types.ERROR,
   offset : '30px',
   transition: transitions.FADE
 }
