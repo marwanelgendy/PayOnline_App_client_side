@@ -47,7 +47,7 @@ const RegisterPage = () => {
     const register = () => {
 
         if (checkInput()) {
-            axios.post('http://localhost:4300/register', {
+            axios.post('https://payonline-be.onrender.com/register', {
                 username: userName,
                 firstname: firstName,
                 secondname: secondName,

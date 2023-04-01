@@ -27,7 +27,7 @@ const BillPage = () => {
         const id = localStorage.getItem('userId')
         if (id == null) navigate('/')
 
-        axios.get(`http://localhost:4300/getBill/${billId}`)
+        axios.get(`https://payonline-be.onrender.com/getBill/${billId}`)
             .then(response => {
                 setBill({ ...response.data.bill })
             })
@@ -45,7 +45,7 @@ const BillPage = () => {
 
         console.log("inn")
 
-        axios.post('http://localhost:4300/payBill', {
+        axios.post('https://payonline-be.onrender.com/payBill', {
             "userId": userId,
             "billId": billId,
             "amount": amount

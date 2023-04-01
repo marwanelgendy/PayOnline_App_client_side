@@ -24,13 +24,13 @@ const HomePage = () => {
         if(id == null) navigate('/')
 
         const userId = localStorage.getItem('userId')
-        axios.get(`http://localhost:4300/getUser/${userId}`)
+        axios.get(`https://payonline-be.onrender.com/getUser/${userId}`)
         .then(response => {
             let arr = response.data.user.bills.reverse().filter(bill => bill.status === 'Active')
             setBills(arr)
         })
 
-        axios.get('http://localhost:4300/getTransfers' , {params : {id : userId}})
+        axios.get('https://payonline-be.onrender.com/getTransfers' , {params : {id : userId}})
         .then(response => {
             setTransfers(response.data.transfer.reverse())
         })

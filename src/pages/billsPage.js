@@ -29,7 +29,7 @@ const BillsPage = () => {
         if(id == null) navigate('/')
 
         const userId = localStorage.getItem('userId')
-        axios.get(`http://localhost:4300/getUser/${userId}`)
+        axios.get(`https://payonline-be.onrender.com/getUser/${userId}`)
             .then(response => {
                 setBills(response.data.user.bills)
                 setBillsToShow(response.data.user.bills.reverse())

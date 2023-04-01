@@ -26,12 +26,12 @@ const TransferMoneyPage = () => {
         const id = localStorage.getItem('userId')
         if(id == null) navigate('/')
 
-        axios.get(`http://localhost:4300/getUser/${id}`)
+        axios.get(`https://payonline-be.onrender.com/getUser/${id}`)
         .then(response =>{
             setUser(response.data.user)
         })
 
-        axios.get('http://localhost:4300/getTransfers' , {params : {id : id}})
+        axios.get('https://payonline-be.onrender.com/getTransfers' , {params : {id : id}})
         .then(response => {
             setTransfers(response.data.transfer.reverse().slice(0,3))
         })
@@ -58,7 +58,7 @@ const TransferMoneyPage = () => {
     }
 
     const updateUserBalance = (amount)=>{
-        axios.post(`http://localhost:4300/updateBalance/${user._id}` , {
+        axios.post(`https://payonline-be.onrender.com/updateBalance/${user._id}` , {
                 "balance" : amount + user.balance
             })
             .then(response =>{
@@ -71,14 +71,14 @@ const TransferMoneyPage = () => {
     }
 
     const updateRecieverBalance = (amount , oldBalance , recieverId)=>{
-        axios.post(`http://localhost:4300/updateBalance/${recieverId}` , {
+        axios.post(`https://payonline-be.onrender.com/updateBalance/${recieverId}` , {
                 "balance" : amount + oldBalance
         })
     }
 
     const addTransfer = (amount , recieverId)=>{
         
-        axios.post('http://localhost:4300/addTransfer' , {
+        axios.post('https://payonline-be.onrender.com/addTransfer' , {
             "Amount" : amount,
             "sender" : user._id,
             "reciever" : recieverId,
@@ -87,7 +87,7 @@ const TransferMoneyPage = () => {
     }
 
     const getReciever = ()=>{
-        axios.get('http://localhost:4300/getUserByName' , {params : {username : userName}})
+        axios.get('https://payonline-be.onrender.com/getUserByName' , {params : {username : userName}})
         .then(response =>{
 
             addTransfer(parseInt(amount) , response.data.user._id)
